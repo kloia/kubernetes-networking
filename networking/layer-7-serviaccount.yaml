@@ -1,0 +1,13 @@
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkPolicy
+metadata:
+  name: serviceaccount-access
+spec:
+  selector: run == 'my-nginx'
+  ingress:
+    - action: Allow
+      source:
+        serviceAccounts:
+          names: ["customer"]
+  egress:
+    - action: Allow

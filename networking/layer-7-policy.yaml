@@ -1,0 +1,12 @@
+apiVersion: crd.projectcalico.org/v1 #projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: customer
+spec:
+  selector: run == 'mynginx'
+  ingress:
+   - action: Allow
+     http:
+       methods: ["GET"]
+  egress:
+    - action: Allow
